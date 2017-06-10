@@ -38,7 +38,6 @@
                 let {username,password}=this.formData;
                 AV.User.logIn(username,password).then(()=>{
                     this.$emit('successLogin',getAVUser())
-
                 },(error)=>{
                     this.errorMessage = getErrorMessage(error)
                 })

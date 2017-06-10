@@ -11,8 +11,9 @@
      </div>
    </div>
 </template>
- 
+
 <script>
+    
     import Topbar from './Topbar'
     import ResumeEditor from './ResumeEditor'
     import ResumePreview from './ResumePreview'
@@ -24,7 +25,7 @@
         }
     }
 </script>
- 
+
 <style lang="scss" scoped>
     #resumeEditor{
         min-width:35%;

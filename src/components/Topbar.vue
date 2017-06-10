@@ -1,7 +1,7 @@
 <template>
     <div id="topbar">
         <div class="wrapper">
-            <span class="logo">Resumer</span>
+            <span class="logo">简历编辑器</span>
             <div class="actions">
                 <div class="userActions" v-if="this.$store.state.user.id">
                     <span class="welcome">你好，{{user.username}}</span>

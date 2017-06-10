@@ -2,7 +2,7 @@
   <div>
     <router-view></router-view>
   </div>
-  
+
 </template>
 
 <script>
@@ -21,20 +21,20 @@ document.body.insertAdjacentHTML('afterbegin',icons)
 export default {
   name: 'app',
   created(){
-    this.$store.commit('initState')
-    let resume = localStorage.getItem('resume')
+    this.$store.commit('initState');
+    let resume = localStorage.getItem('resume');
     if(resume){
         this.$store.commit('setResume',JSON.parse(resume))
     }
-    let user = getAVUser()
+    let user = getAVUser();
     // console.log(user)
     // this.$store.commit('setResumeId',{id:getAVUser().id})
     if(user){
-      this.$store.dispatch('fetchResume')
-      this.$store.state.user.id = user.id
+      this.$store.dispatch('fetchResume');
+      this.$store.state.user.id = user.id;
       this.$store.state.user.username = user.username
-    }
-     
+    };
+
     // if(user.id){
     //   console.log(user.id)
     //   this.$store.dispatch('fetchResume').then(()=>{
@@ -45,10 +45,10 @@ export default {
     // }
   },
   methods:{
-    
+
   }
 }
-  
+
 </script>
 
 <style lang="scss" scoped></style>
