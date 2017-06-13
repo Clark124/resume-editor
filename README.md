@@ -4,13 +4,15 @@
 ### 3.采用最新技术生态，ES6/ES7语法，追求最佳实践
 
 ## 技术栈
-- 前端：vue-cli+vue-router+vuex+bootstrap
-        vue-i18n多语言切换
-        sass模块化css
-        animate.css与动画交互
-        es6语法
-        webpack打包
-- 后端：leancloud与后台交互，数据存储
+### 前端：
+- vue-cli+vue-router+vuex+bootstrap
+- vue-i18n多语言切换
+- sass模块化css
+- animate.css与动画交互
+- es6语法
+- webpack打包
+### 后端：
+- leancloud与后台交互，数据存储
 
 
 [预览](https://clark124.github.io/resume-editor/dist)
