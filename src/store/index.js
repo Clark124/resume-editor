@@ -84,6 +84,11 @@ export default new Vuex.Store({
     actions: {
         saveResume({state,commit},payload){
         //新建一个帖子对象
+            let user = getAVUser()
+            if(!user){
+                alert('请先登录')
+                return
+            }
             var Resume = AV.Object.extend('Resume')
             var resume = new Resume()
             if(state.resume.id){
@@ -104,11 +109,13 @@ export default new Vuex.Store({
             resume.setACL(acl)
                 
             resume.save().then(function(response){
+                console.log(response)
                 if(!state.resume.id){
                     commit('setResumeId',{id:response.id})
                 }
+                alert('保存成功')
             }).catch(function(error){
-                    console.log(error)
+                    alert(error)
                 })
         },
         fetchResume({commit},payload){
@@ -116,8 +123,7 @@ export default new Vuex.Store({
             query.equalTo('owner_id',getAVUser().id)
 
             query.first().then((resume)=>{
-                if(resume){
-                    
+                if(resume){ 
                     commit('setResume',{id: resume.id,...resume.attributes})          
                 }
             })

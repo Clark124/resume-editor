@@ -13,27 +13,31 @@
            </ol>
        </nav>
        <ol class="panels">
-           <li v-for="item in resumeConfig" v-show="item.field === selected">
+          <transition-group enter-active-class="animated fadeIn">
+           <li v-for="item in resumeConfig" v-show="item.field === selected" :key="item">
                <div v-if="item.type==='array'">
                    <!--<h2>{{item.field}}</h2>-->
-                   <h2>{{$t(`resume.${item.field}._`)}}</h2>
-                   <div class="subitem" v-for="(subitem,i) in resume[item.field]">
-                       <button class="button remove small" @click="removeResumeSubField(item.field,i)">删除</button>
-                       <div class="resumeField" v-for="(value,key) in subitem">
+                   <h3>{{$t(`resume.${item.field}._`)}}</h3>
+                   <transition-group enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight" >
+                   <div class="subitem" v-for="(subitem,i) in resume[item.field]" :key="item">
+                       <button class="btn btn-warning btn-sm" @click="removeResumeSubField(item.field,i)">删除</button>
+                       <div class="form-group" v-for="(value,key) in subitem">
                            <!--<label> {{key}} </label>-->
                            <label> {{$t(`resume.${item.field}.${key}`)}} </label>
-                           <input type="text" :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`, $event.target.value)">
+                           <input type="text" class="form-control" :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`, $event.target.value)">
                        </div>
                        <hr>
                    </div>
-                   <button class="button" @click="addResumeSubfield(item.field)">新增</button>                  
+                   </transition-group>
+                   <button class="btn btn-success" @click="addResumeSubfield(item.field)">新增</button>                  
                </div>
-               <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
+               <div v-else class="form-group" v-for="(value,key) in resume[item.field]">
                    <!--<label>{{key}}</label>-->
                    <label> {{$t(`resume.profile.${key}`)}} </label>
-                   <input type="text" :value="value" @input="changeResumeField(`${item.field}.${key}`,$event.target.value)">
+                   <input type="text" class="form-control" :value="value" @input="changeResumeField(`${item.field}.${key}`,$event.target.value)">
                </div>
            </li>
+           </transition-group> 
        </ol>
     </div>
 </template>
@@ -85,7 +89,7 @@
     }
     #resumeEditor> nav{
         width: 80px;
-        background: black;
+        background: #12a8d4;
         color: white;
     }
     #resumeEditor> nav>ol>li{
@@ -107,10 +111,16 @@
     .panels{
         flex-grow: 1;
      }
-     .panels>li {
+     .panels li {
             padding: 24px;
-            h2{
+            h3{
                 margin-bottom:24px;
+            }
+            .form-group{
+                margin-bottom: 30px;
+                label{
+                    font-size: 16px;
+                }
             }
         }
         
@@ -136,12 +146,12 @@
         border-top:1px solid #ddd;
         margin: 24px 0;
     }
-    .panels>li>div{
+    .panels .subitem{
         position: relative;
-        .button.remove{
+        .btn-warning{
             position: absolute;
             right: 0;
-            top: 0;
+            top: -5px;
         }
     }
    

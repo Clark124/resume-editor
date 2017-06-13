@@ -1,27 +1,25 @@
-# yes
+# 单页在线简历编辑器
+### 1.用户可以添加简历内容，包括个人信息、工作经历、学习经历、获奖情况、项目经理和联系方式
+### 2.用户可以进行登录、注册、重置密码，保存所写简历内容，方便以后查看或者修改
+### 3.采用最新技术生态，ES6/ES7语法，追求最佳实践
 
-> A Vue.js project
+## 技术栈
+- 前端：vue-cli+vue-router+vuex+bootstrap
+        vue-i18n多语言切换
+        sass模块化css
+        animate.css与动画交互
+        es6语法
+        webpack打包
+- 后端：leancloud与后台交互，数据存储
 
-## Build Setup
 
-``` bash
-# install dependencies
-npm install
+[预览](https://clark124.github.io/resume-editor/dist)
 
-# serve with hot reload at localhost:8080
-npm run dev
+## 使用方法
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+git clone git@github.com:Clark124/resume-editor.git
+cd resume-editor
+npm install
+npm start
+```
